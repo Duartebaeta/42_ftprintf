@@ -3,18 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dhomem-d <dhomem-d@student.42.fr>          +#+  +:+       +#+         #
+#    By: duartebaeta <duartebaeta@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 13:49:59 by dhomem-d          #+#    #+#              #
-#    Updated: 2021/12/02 13:57:50 by dhomem-d         ###   ########.fr        #
+#    Updated: 2021/12/04 13:22:51 by duartebaeta      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 CC = gcc
-CFLAGS = -Wall, -Wextra and -Werror -L../../42_libft/libft -lft
+CFLAGS = -Wall, -Wextra and -Werror -lft
 
-SRCS = 
+SRCS = ft_printf ft_selector \
 
 OBJS = $(SRCS:.c=.o)
 RM = rm -f
@@ -28,6 +28,7 @@ $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
 all: $(NAME)
+	cd /libft && $(MAKE) -f makefile
 
 clen:
 	$(RM) $(NAME)
