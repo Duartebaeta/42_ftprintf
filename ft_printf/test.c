@@ -1,6 +1,6 @@
 #include <stdio.h>
 int main()
 {
-	double test = 3.2;
-	printf("%d", test);
+	//unsigned int test = 3147483648;
+	printf("%x", 65523);
 }

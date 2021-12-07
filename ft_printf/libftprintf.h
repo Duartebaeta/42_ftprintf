@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: duartebaeta <duartebaeta@student.42.fr>    +#+  +:+       +#+        */
+/*   By: dhomem-d <dhomem-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 13:36:56 by dhomem-d          #+#    #+#             */
-/*   Updated: 2021/12/04 13:14:52 by duartebaeta      ###   ########.fr       */
+/*   Updated: 2021/12/07 16:07:11 by dhomem-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@
 
 void	ft_printf(const char *format, ...);
 void	ft_selector(char param, void *data);
+void	ft_printf_u(unsigned int data);
 
 #endif

@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: duartebaeta <duartebaeta@student.42.fr>    +#+  +:+       +#+         #
+#    By: dhomem-d <dhomem-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 13:49:59 by dhomem-d          #+#    #+#              #
-#    Updated: 2021/12/04 13:22:51 by duartebaeta      ###   ########.fr        #
+#    Updated: 2021/12/07 15:49:59 by dhomem-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 CC = gcc
-CFLAGS = -Wall, -Wextra and -Werror -lft
+CFLAGS = -Wall, -Wextra and -Werror -L./libft -lft
 
 SRCS = ft_printf ft_selector \
 
