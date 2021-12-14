@@ -6,31 +6,40 @@
 #    By: dhomem-d <dhomem-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 13:49:59 by dhomem-d          #+#    #+#              #
-#    Updated: 2021/12/07 15:49:59 by dhomem-d         ###   ########.fr        #
+#    Updated: 2021/12/14 18:04:35 by dhomem-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 CC = gcc
-CFLAGS = -Wall, -Wextra and -Werror -L./libft -lft
+CFLAGS = -Wall -Wextra -Werror
 
-SRCS = ft_printf ft_selector \
+SRCS =  ft_printf.c ft_selector.c ft_printf_u.c change_base.c \
+		ft_printf_x.c ft_printf_p.c ft_printf_c.c ft_printf_di.c \
+		ft_printf_s.c \
 
 OBJS = $(SRCS:.c=.o)
 RM = rm -f
-INCLUDES = libftprintf.h
+INCLUDES = libftprintf.h -L./libft/libft.h
+LIBFT = libft
 
 
 .c.o:
-	$(CC) $(CFLAGS) -c $(SRCS)
+	$(CC) $(CFLAGS) -I $(INCLUDES) -o $@ -c $<
 
 $(NAME): $(OBJS)
+	make -C $(LIBFT)
+	cp libft/libft.a ./$(NAME)
 	ar rcs $(NAME) $(OBJS)
 
 all: $(NAME)
-	cd /libft && $(MAKE) -f makefile
 
-clen:
+clean:
+	$(RM) $(OBJS)
+	make clean -C $(LIBFT) 
+
+fclean: clean
 	$(RM) $(NAME)
+	make fclean -C $(LIBFT)
 
 re: fclean all

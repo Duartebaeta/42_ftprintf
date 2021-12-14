@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: duartebaeta <duartebaeta@student.42.fr>    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/12/04 13:11:17 by duartebaeta       #+#    #+#              #
-#    Updated: 2021/12/04 13:11:18 by duartebaeta      ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = libft.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -25,20 +13,18 @@ SRCS = ft_strlen.c ft_atoi.c ft_strjoin.c \
 	   ft_memmove.c ft_bzero.c ft_strnstr.c \
 	   ft_itoa.c ft_strmapi.c ft_striteri.c \
 	   ft_putchar_fd.c ft_putstr_fd.c \
-	   ft_putendl_fd.c ft_putnbr_fd.c 
-
-SRCSB = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
-	   	ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
+	   ft_putendl_fd.c ft_putnbr_fd.c \
+	   ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
+		ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
 	   	ft_lstclear.c ft_lstiter.c ft_lstmap.c 
 
 OBJS = $(SRCS:.c=.o)
-BOBJS = $(SRCSB:.c=.o)
 RM = rm -f
 INCLUDES = libft.h
 
 
 .c.o:
-	$(CC) $(CFLAGS) -c $(SRCS) $(SRCSB)
+	$(CC) $(CFLAGS) -c $(SRCS) 
 
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
@@ -46,14 +32,11 @@ $(NAME): $(OBJS)
 all: $(NAME)
 
 clean:
-	$(RM) $(OBJS) $(BOBJS)
+	$(RM) $(OBJS) 
 
 fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
 
-bonus: $(BOBJS)
-		ar rcs $(NAME) $(BOBJS)
-
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re 
