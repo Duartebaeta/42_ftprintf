@@ -6,7 +6,7 @@
 #    By: dhomem-d <dhomem-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 13:49:59 by dhomem-d          #+#    #+#              #
-#    Updated: 2021/12/14 18:04:35 by dhomem-d         ###   ########.fr        #
+#    Updated: 2021/12/16 16:23:20 by dhomem-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,12 @@ SRCS =  ft_printf.c ft_selector.c ft_printf_u.c change_base.c \
 
 OBJS = $(SRCS:.c=.o)
 RM = rm -f
-INCLUDES = libftprintf.h -L./libft/libft.h
 LIBFT = libft
+INCLUDES = libftprintf.h -L $(LIBFT) -lft
 
 
 .c.o:
-	$(CC) $(CFLAGS) -I $(INCLUDES) -o $@ -c $<
+	$(CC) $(CFLAGS) -I $(INCLUDES) -o $@
 
 $(NAME): $(OBJS)
 	make -C $(LIBFT)
