@@ -6,11 +6,11 @@
 /*   By: dhomem-d <dhomem-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 15:46:25 by dhomem-d          #+#    #+#             */
-/*   Updated: 2021/12/14 15:46:40 by dhomem-d         ###   ########.fr       */
+/*   Updated: 2021/12/16 20:26:42 by dhomem-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_printf_c(char data)
 {

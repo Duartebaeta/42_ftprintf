@@ -6,11 +6,11 @@
 /*   By: dhomem-d <dhomem-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 13:39:37 by dhomem-d          #+#    #+#             */
-/*   Updated: 2021/12/14 18:03:08 by dhomem-d         ###   ########.fr       */
+/*   Updated: 2021/12/16 20:26:06 by dhomem-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_selector(char param, void *data)
 {
@@ -66,3 +66,9 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (total);
 }
+
+// int main()
+// {
+// 	ft_printf("ola ola");
+// 	return 0;
+// }

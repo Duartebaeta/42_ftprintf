@@ -6,7 +6,7 @@
 #    By: dhomem-d <dhomem-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 13:49:59 by dhomem-d          #+#    #+#              #
-#    Updated: 2021/12/16 16:23:20 by dhomem-d         ###   ########.fr        #
+#    Updated: 2021/12/16 20:27:01 by dhomem-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,23 +14,24 @@ NAME = libftprintf.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS =  ft_printf.c ft_selector.c ft_printf_u.c change_base.c \
+SRCS =  ft_printf.c ft_printf_u.c ft_chbase.c \
 		ft_printf_x.c ft_printf_p.c ft_printf_c.c ft_printf_di.c \
 		ft_printf_s.c \
 
 OBJS = $(SRCS:.c=.o)
 RM = rm -f
 LIBFT = libft
-INCLUDES = libftprintf.h -L $(LIBFT) -lft
+INCLUDES = ft_printf.h 
 
 
 .c.o:
-	$(CC) $(CFLAGS) -I $(INCLUDES) -o $@
+	$(CC) $(CFLAGS) -I $(INCLUDES) -o $@ -c $<
 
 $(NAME): $(OBJS)
 	make -C $(LIBFT)
 	cp libft/libft.a ./$(NAME)
 	ar rcs $(NAME) $(OBJS)
+	ranlib $(NAME)
 
 all: $(NAME)
 
@@ -43,3 +44,5 @@ fclean: clean
 	make fclean -C $(LIBFT)
 
 re: fclean all
+
+.PHONY: all clean fclean re
