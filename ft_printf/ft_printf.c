@@ -3,36 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dhomem-d <dhomem-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: duartebaeta <duartebaeta@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 13:39:37 by dhomem-d          #+#    #+#             */
-/*   Updated: 2021/12/16 20:26:06 by dhomem-d         ###   ########.fr       */
+/*   Updated: 2022/01/07 21:13:11 by duartebaeta      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_selector(char param, void *data)
+int	ft_selector(char param, va_list args)
 {
 	if (param == 'c')
-		return (ft_printf_c((char)data));
+		return (ft_printf_c(va_arg(args, int)));
 	else if (param == 's')
-		return (ft_printf_s((char *)data));
+		return (ft_printf_s(va_arg(args, char *)));
 	else if (param == 'p')
 	{
 		ft_putstr_fd("0x", 1);
-		return (ft_printf_p((unsigned long)data));
+		return (ft_printf_p(va_arg(args, unsigned long)));
 	}
 	else if (param == 'd')
-		return (ft_printf_di((int)data));
+		return (ft_printf_di(va_arg(args, int)));
 	else if (param == 'i')
-		return (ft_printf_di((int)data));
+		return (ft_printf_di(va_arg(args, int)));
 	else if (param == 'u')
-		return (ft_printf_u((unsigned int)data));
+		return (ft_printf_u(va_arg(args, unsigned int)));
 	else if (param == 'x')
-		return (ft_printf_x((unsigned int)data, 0));
+		return (ft_printf_x(va_arg(args, unsigned int), 0));
 	else if (param == 'X')
-		return (ft_printf_x((unsigned int)data, 1));
+		return (ft_printf_x(va_arg(args, unsigned int), 1));
 	else if (param == '%')
 		return (ft_printf_c('%'));
 	return (0);
@@ -53,15 +53,14 @@ int	ft_printf(const char *format, ...)
 		{
 			if (ft_strchr("cspdiuxX%", format[counter + 1]) != NULL)
 			{
-				total += ft_selector(format[counter + 1], va_arg(args, void *));
+				total += ft_selector(format[counter + 1], args);
+				if (format[counter + 1] != '%')
+					va_arg(args, int);
 				counter += 2;
 			}
 		}
 		else
-		{
-			ft_putchar_fd(format[counter++], 1);
-			total++;
-		}
+			total += needsomelines(format[counter++]);
 	}
 	va_end(args);
 	return (total);
@@ -69,6 +68,11 @@ int	ft_printf(const char *format, ...)
 
 // int main()
 // {
-// 	ft_printf("ola ola");
+// 	int total;
+	
+// 	total = ft_printf("%%%s%c %i%%", "ola tudo bem", '?', 19);
+// 	printf("\nMy total=%i\n", total);
+// 	total = printf("%%%s%c %i%%", "ola tudo bem", '?', 19);
+// 	printf("\nTrue total=%i\n", total);
 // 	return 0;
 // }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_di.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dhomem-d <dhomem-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: duartebaeta <duartebaeta@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 15:45:22 by dhomem-d          #+#    #+#             */
-/*   Updated: 2021/12/16 20:26:36 by dhomem-d         ###   ########.fr       */
+/*   Updated: 2022/01/07 19:26:04 by duartebaeta      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,15 @@ int	ft_printf_di(int data)
 	int	counter;
 
 	counter = 0;
+	ft_putnbr_fd(data, 1);
+	if (data < 0)
+		counter++;
+	if (data == 0)
+		return (1);
 	while (data != 0)
 	{
 		data /= 10;
 		counter++;
 	}
-	ft_putnbr_fd(data, 1);
 	return (counter);
 }

@@ -3,27 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_chbase.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dhomem-d <dhomem-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: duartebaeta <duartebaeta@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 16:35:13 by dhomem-d          #+#    #+#             */
-/*   Updated: 2021/12/16 20:26:46 by dhomem-d         ###   ########.fr       */
+/*   Updated: 2022/01/07 20:50:34 by duartebaeta      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+int	needsomelines(char c)
+{
+	ft_putchar_fd(c, 1);
+	return (1);
+}
+
 char	change_base(unsigned int data, int selec)
 {
 	char	*hex_base;
+	char	*hex_base2;
 
 	hex_base = "0123456789abcdef\0";
+	hex_base2 = "0123456789ABCDEF\0";
 	if (selec == 1)
-	{
-		while (*hex_base != '\0')
-		{
-			ft_toupper(*hex_base);
-			hex_base++;
-		}
-	}
+		return (hex_base2[data]);
 	return (hex_base[data]);
 }

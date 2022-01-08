@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_x.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dhomem-d <dhomem-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: duartebaeta <duartebaeta@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 15:42:07 by dhomem-d          #+#    #+#             */
-/*   Updated: 2021/12/16 20:26:18 by dhomem-d         ###   ########.fr       */
+/*   Updated: 2022/01/07 20:12:25 by duartebaeta      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_printf_x(unsigned int data, int selec)
 {
-	int	counter;
+	static int	counter;
 
 	counter = 0;
 	if (data / 16 != 0)

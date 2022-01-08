@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dhomem-d <dhomem-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: duartebaeta <duartebaeta@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 13:36:56 by dhomem-d          #+#    #+#             */
-/*   Updated: 2021/12/16 20:25:44 by dhomem-d         ###   ########.fr       */
+/*   Updated: 2022/01/07 20:50:59 by duartebaeta      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
-# include "libft/libft.h"
+# include <limits.h>
+# include "./libft/libft.h"
 
 int		ft_printf(const char *format, ...);
 int		ft_printf_u(unsigned int data);
@@ -28,5 +29,6 @@ int		ft_printf_p(unsigned long data);
 int		ft_printf_c(char data);
 int		ft_printf_di(int data);
 int		ft_printf_s(char *data);
+int		needsomelines(char c);
 
 #endif

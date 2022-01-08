@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_p.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dhomem-d <dhomem-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: duartebaeta <duartebaeta@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 15:43:34 by dhomem-d          #+#    #+#             */
-/*   Updated: 2021/12/16 20:26:32 by dhomem-d         ###   ########.fr       */
+/*   Updated: 2022/01/07 20:06:57 by duartebaeta      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_printf_p(unsigned long data)
 {
-	int	counter;
+	static int	counter;
 
 	counter = 0;
 	if (data / 16 != 0)

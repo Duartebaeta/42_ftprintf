@@ -3,45 +3,46 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dhomem-d <dhomem-d@student.42.fr>          +#+  +:+       +#+         #
+#    By: duartebaeta <duartebaeta@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 13:49:59 by dhomem-d          #+#    #+#              #
-#    Updated: 2021/12/16 20:27:01 by dhomem-d         ###   ########.fr        #
+#    Updated: 2022/01/07 21:45:50 by duartebaeta      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
+
 CC = gcc
+
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS =  ft_printf.c ft_printf_u.c ft_chbase.c \
-		ft_printf_x.c ft_printf_p.c ft_printf_c.c ft_printf_di.c \
-		ft_printf_s.c \
-
-OBJS = $(SRCS:.c=.o)
-RM = rm -f
 LIBFT = libft
-INCLUDES = ft_printf.h 
 
+LIBS = ft_printf.h -L./libft -lft
 
-.c.o:
-	$(CC) $(CFLAGS) -I $(INCLUDES) -o $@ -c $<
+SRCS = ft_chbase.c ft_printf_c.c ft_printf_di.c ft_printf_p.c \
+		ft_printf_s.c ft_printf_u.c ft_printf_x.c ft_printf.c \
 
-$(NAME): $(OBJS)
-	make -C $(LIBFT)
-	cp libft/libft.a ./$(NAME)
-	ar rcs $(NAME) $(OBJS)
-	ranlib $(NAME)
+OBJS  = $(SRCS:.c=.o)
 
 all: $(NAME)
 
+$(NAME): $(OBJS)
+		@make -C $(LIBFT)
+		@cp libft/libft.a ./$(NAME)
+		@ar rc $(NAME) $(OBJS)
+		@ranlib $(NAME)
+
+.o.c:
+		@$(CC) $(CFLAGS) -I $(LIBS) -o $@ -c $<
+
 clean:
-	$(RM) $(OBJS)
-	make clean -C $(LIBFT) 
+		@rm -f $(OBJS)
+		@make clean -C $(LIBFT)
 
 fclean: clean
-	$(RM) $(NAME)
-	make fclean -C $(LIBFT)
+		@rm -f $(NAME)
+		@make fclean -C $(LIBFT)
 
 re: fclean all
 
